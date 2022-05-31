@@ -72,7 +72,7 @@ In a nutshell the goal of this project is to predict the sale price of a propert
 
 ## How to Interact With This Repository
 ```bash
-git clone https
+git clone https://github.com/JWThacker/Kaggle-Competition-House-Prices.git
 cd ./Housing_Prices_Project
 ```
 ## Installations
