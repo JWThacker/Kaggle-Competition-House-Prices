@@ -97,6 +97,32 @@ def pipeline_xgbr(num_feats_to_keep, cat_feats_to_encode):
         ])
     return pipelinexgb
 
+    """pipeline_xgbr_best_params: ML pipeline with the following steps
+
+       1. Numerical feature transformations
+           1a. Apply standardization
+           1b. Apply KNN imputer to missing data
+           1c. Calculate 8 principal components
+
+       2. Apply treatment coding to the categorical features
+       3. Fit XGBoost to the combined results of (2) and (3)
+    """
+def pipeline_xgbr_best_params(num_feats_to_keep, cat_feats_to_encode):
+    pipelinexgb = Pipeline([
+           ('features', FeatureUnion([
+               ('PCA_pipeline', Pipeline([
+                    ('StandardScaler', CustomStandardScaler(num_feats_to_keep)),
+                    ('Imputer', KNNImputer()),
+                    ('PCA', PCA(n_components=8))
+                ])),
+                ('factor_encoder', CustomEncoder(cat_feats_to_encode))
+            ])),
+            ('xgbr', XGBRegressor(random_state=123,
+                                  max_depth=5,
+                                  n_estimators=20))
+        ])
+    return pipelinexgb
+
     """pipeline_knn: ML pipeline with the following steps
 
        1. Numerical feature transformations

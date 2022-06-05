@@ -1,5 +1,8 @@
 # Kaggle Competition: Hous Prices - Advanced Regression Techniques
 
+## Link to Medium Article
+https://medium.com/@thacker.jared/my-first-data-science-competition-9b856538ea3d
+
 ## Skills Used
   * Exploratory data analysis and visualization
   * Data manipulation and cleaning
